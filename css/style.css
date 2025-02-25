@@ -1,0 +1,99 @@
+:root {
+  --clr-light: #ffffff;
+  --clr-dark: #0b0c41;
+
+  /* night */
+  --bg-night-sky: linear-gradient(
+      0deg,
+      var(--clr-light) 0%,
+      var(--clr-dark) 50%
+    )
+    no-repeat;
+  --bg-night-cloud: #c0c0d6;
+
+  /* morning */
+  --bg-morning-sky: linear-gradient(0deg, var(--clr-light) 0%, #94c9ff 50%)
+    no-repeat;
+  --bg-morning-cloud: var(--clr-light);
+
+  /* size */
+  --size-cloud: 350px;
+  --unit-base-cloud: calc(28.57 * calc(var(--size-cloud) / 100));
+  --size-soon: 150px;
+  --unit-base-sun: calc(1.5 * calc(var(--size-soon) / 100));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.morning {
+  background: var(--bg-morning-sky);
+}
+.morning .luminary {
+  background-color: #faec73;
+  width: 150px;
+  translate: 40%;
+}
+.morning .cloud {
+  background-color: var(--bg-morning-cloud);
+}
+
+.night {
+  background: var(--bg-night-sky);
+}
+.night .luminary {
+  box-shadow: 6px -27px 0 9px var(--clr-light);
+  rotate: -140deg;
+  width: 120px;
+  translate: 96%;
+}
+.night .cloud {
+  background-color: var(--bg-night-cloud);
+}
+
+.luminary {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+
+.cloud {
+  width: var(--size-cloud);
+  aspect-ratio: 7 / 3;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  translate: -50%;
+  border-radius: var(--unit-base-cloud);
+}
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: inherit;
+}
+.cloud::before {
+  width: var(--unit-base-cloud);
+  top: -28%;
+  left: 15%;
+}
+.cloud::after {
+  content: "";
+  position: absolute;
+  width: calc(var(--unit-base-cloud) * 1.8);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  top: -46%;
+  left: 34%;
+}
