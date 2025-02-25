@@ -74,3 +74,16 @@ function getWeather({
 // getWeather({
 //   city: "Brasília",
 // });
+
+// TODO: remover depois
+document.addEventListener("click", () => {
+  const isMorning = document.body.classList.contains("morning");
+
+  if (isMorning) {
+    document.body.classList.remove("morning");
+    document.body.classList.add("night");
+  } else {
+    document.body.classList.add("morning");
+    document.body.classList.remove("night");
+  }
+});

@@ -31,6 +31,13 @@
 
 body {
   min-height: 100vh;
+  overflow: hidden;
+}
+body::before,
+body::after {
+  content: "";
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
 }
 
 .morning {
@@ -48,6 +55,26 @@ body {
 .night {
   background: var(--bg-night-sky);
 }
+.night::before,
+.night::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  aspect-ratio: 1;
+  background: var(--clr-light);
+  clip-path: polygon(50% 0, 79% 90%, 2% 35%, 98% 35%, 21% 90%);
+  opacity: 1;
+}
+.night::before {
+  top: 10%;
+  left: 50%;
+  translate: -500%;
+}
+.night::after {
+  top: 15%;
+  left: 50%;
+  translate: 500%;
+}
 .night .luminary {
   box-shadow: 6px -27px 0 9px var(--clr-light);
   rotate: -140deg;
@@ -64,6 +91,7 @@ body {
   left: 50%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
+  transition: background-color 150ms ease-in-out;
 }
 
 .cloud {
