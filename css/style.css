@@ -39,6 +39,9 @@ body::after {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
 }
+body:not(.is-raining) .rain {
+  opacity: 0;
+}
 
 .morning {
   background: var(--bg-morning-sky);
@@ -124,4 +127,37 @@ body::after {
   border-radius: 50%;
   top: -46%;
   left: 34%;
+}
+
+.rain {
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -20px -24px;
+}
+.rain .drop {
+  --drop-left: 0;
+  --drop-top: 0;
+  position: absolute;
+  display: block;
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--clr-light));
+  left: var(--drop-left);
+  top: var(--drop-top);
+}
+.rain .drop::before,
+.rain .drop::after {
+  content: "";
+  position: inherit;
+  width: inherit;
+  height: inherit;
+  background: inherit;
+}
+.rain .drop::before {
+  translate: 10px 10px;
+}
+.rain .drop::after {
+  translate: -10px 10px;
 }
