@@ -71,19 +71,26 @@ function getWeather({
     });
 }
 
-// getWeather({
-//   city: "Brasília",
-// });
-
-// TODO: remover depois
-document.addEventListener("click", () => {
-  const isMorning = document.body.classList.contains("morning");
-
-  if (isMorning) {
-    document.body.classList.remove("morning");
-    document.body.classList.add("night");
-  } else {
+function setMoment() {
+  const date = new Date();
+  const hours = date.getHours();
+  if (hours >= 6 && hours < 18) {
     document.body.classList.add("morning");
     document.body.classList.remove("night");
+  } else {
+    document.body.classList.add("night");
+    document.body.classList.remove("morning");
   }
+
+  //   getWeather({
+  //     city: "Brasília",
+  //   });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setMoment();
 });
+
+setInterval(() => {
+  setMoment();
+}, 5000);
